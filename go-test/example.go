@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/go-snh/tg"
 	"fmt"
-	"log"
+	"github.com/go-snh/tg"
 	"io/ioutil"
+	"log"
 )
+
 func main() {
 	println(fmt.Sprint("Starting Program..."))
 	bot1 := new(tg.TelegramBot)
@@ -18,11 +19,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	println("Hello! I am "+bot_user.FirstName)
+	println("Hello! I am " + bot_user.FirstName)
 
 	message := make(map[string]interface{})
 	message["chat_id"] = 3899337
-	message["text"] = "Hello! I am "+bot_user.FirstName
+	message["text"] = "Hello! I am " + bot_user.FirstName
 	_, err = bot1.SendMessage(message)
 	if err != nil {
 		log.Fatal(err)

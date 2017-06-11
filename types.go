@@ -363,164 +363,164 @@ type InlineQuery struct {
 
 // https://core.telegram.org/bots/api#inlinequeryresultarticle
 type InlineQueryResultArticle struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Title               string               `json:"title"`
+	Type  string `json:"type"`
+	Id    string `json:"id"`
+	Title string `json:"title"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
-	Url                 string               `json:"url"`
-	HideUrl             bool                 `json:"hide_url"`
-	Description         string               `json:"description"`
-	ThumbUrl            string               `json:"thumb_url"`
-	ThumbWidth          int                  `json:"thumb_width"`
-	ThumbHeight         int                  `json:"thumb_height"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
+	Url         string               `json:"url"`
+	HideUrl     bool                 `json:"hide_url"`
+	Description string               `json:"description"`
+	ThumbUrl    string               `json:"thumb_url"`
+	ThumbWidth  int                  `json:"thumb_width"`
+	ThumbHeight int                  `json:"thumb_height"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultphoto
 type InlineQueryResultPhoto struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	PhotoUrl            string               `json:"photo_url"`
-	ThumbUrl            string               `json:"thumb_url"`
-	PhotoWidth          int                  `json:"photo_width"`
-	PhotoHeight         int                  `json:"photo_height"`
-	Title               string               `json:"title"`
-	Description         string               `json:"description"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	PhotoUrl    string               `json:"photo_url"`
+	ThumbUrl    string               `json:"thumb_url"`
+	PhotoWidth  int                  `json:"photo_width"`
+	PhotoHeight int                  `json:"photo_height"`
+	Title       string               `json:"title"`
+	Description string               `json:"description"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultgif
 type InlineQueryResultGif struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	GifUrl              string               `json:"gif_url"`
-	GifWidth            int                  `json:"gif_width"`
-	GifHeight           int                  `json:"gif_height"`
-	GifDuration         int                  `json:"gif_duration"`
-	ThumbUrl            string               `json:"thumb_url"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	GifUrl      string               `json:"gif_url"`
+	GifWidth    int                  `json:"gif_width"`
+	GifHeight   int                  `json:"gif_height"`
+	GifDuration int                  `json:"gif_duration"`
+	ThumbUrl    string               `json:"thumb_url"`
+	Title       string               `json:"title"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
 type InlineQueryResultMpeg4Gif struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Mpeg4Url            string               `json:"mpeg4_url"`
-	Mpeg4Width          int                  `json:"mpeg4_width"`
-	Mpeg4Height         int                  `json:"mpeg4_height"`
-	Mpeg4Duration       int                  `json:"mpeg4_duration"`
-	ThumbUrl            string               `json:"thumb_url"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type          string               `json:"type"`
+	Id            string               `json:"id"`
+	Mpeg4Url      string               `json:"mpeg4_url"`
+	Mpeg4Width    int                  `json:"mpeg4_width"`
+	Mpeg4Height   int                  `json:"mpeg4_height"`
+	Mpeg4Duration int                  `json:"mpeg4_duration"`
+	ThumbUrl      string               `json:"thumb_url"`
+	Title         string               `json:"title"`
+	Caption       string               `json:"caption"`
+	ReplyMarkup   InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultvideo
 type InlineQueryResultVideo struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	VideoUrl            string               `json:"video_url"`
-	MimeType            string               `json:"mime_type"`
-	ThumbUrl            string               `json:"thumb_url"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	VideoWidth          int                  `json:"video_width"`
-	VideoHeight         int                  `json:"video_height"`
-	VideoDuration       int                  `json:"video_duration"`
-	Description         string               `json:"description"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type          string               `json:"type"`
+	Id            string               `json:"id"`
+	VideoUrl      string               `json:"video_url"`
+	MimeType      string               `json:"mime_type"`
+	ThumbUrl      string               `json:"thumb_url"`
+	Title         string               `json:"title"`
+	Caption       string               `json:"caption"`
+	VideoWidth    int                  `json:"video_width"`
+	VideoHeight   int                  `json:"video_height"`
+	VideoDuration int                  `json:"video_duration"`
+	Description   string               `json:"description"`
+	ReplyMarkup   InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultaudio
 type InlineQueryResultAudio struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	AudioUrl            string               `json:"audio_url"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	Performer           string               `json:"performer"`
-	AudioDuration       int                  `json:"audio_duration"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type          string               `json:"type"`
+	Id            string               `json:"id"`
+	AudioUrl      string               `json:"audio_url"`
+	Title         string               `json:"title"`
+	Caption       string               `json:"caption"`
+	Performer     string               `json:"performer"`
+	AudioDuration int                  `json:"audio_duration"`
+	ReplyMarkup   InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultvoice
 type InlineQueryResultVoice struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	VoiceUrl            string               `json:"voice_url"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	VoiceDuration       int                  `json:"voice_duration"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type          string               `json:"type"`
+	Id            string               `json:"id"`
+	VoiceUrl      string               `json:"voice_url"`
+	Title         string               `json:"title"`
+	Caption       string               `json:"caption"`
+	VoiceDuration int                  `json:"voice_duration"`
+	ReplyMarkup   InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultdocument
 type InlineQueryResultDocument struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	DocumentUrl         string               `json:"document_url"`
-	MimeType            string               `json:"mime_type"`
-	Description         string               `json:"description"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	Title       string               `json:"title"`
+	Caption     string               `json:"caption"`
+	DocumentUrl string               `json:"document_url"`
+	MimeType    string               `json:"mime_type"`
+	Description string               `json:"description"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
-	ThumbUrl            string               `json:"thumb_url"`
-	ThumbWidth          int                  `json:"thumb_width"`
-	ThumbHeight         int                  `json:"thumb_height"`
+	ThumbUrl    string `json:"thumb_url"`
+	ThumbWidth  int    `json:"thumb_width"`
+	ThumbHeight int    `json:"thumb_height"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultlocation
 type InlineQueryResultLocation struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Latitude            float32              `json:"latitude"`
-	Longitude           float32              `json:"longitude"`
-	Title               string               `json:"title"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	Latitude    float32              `json:"latitude"`
+	Longitude   float32              `json:"longitude"`
+	Title       string               `json:"title"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
-	ThumbUrl            string               `json:"thumb_url"`
-	ThumbWidth          int                  `json:"thumb_width"`
-	ThumbHeight         int                  `json:"thumb_height"`
+	ThumbUrl    string `json:"thumb_url"`
+	ThumbWidth  int    `json:"thumb_width"`
+	ThumbHeight int    `json:"thumb_height"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultvenue
 type InlineQueryResultVenue struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Latitude            float32              `json:"latitude"`
-	Longitude           float32              `json:"longitude"`
-	Title               string               `json:"title"`
-	Address             string               `json:"address"`
-	FoursquareId        string               `json:"foursquare_id"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type         string               `json:"type"`
+	Id           string               `json:"id"`
+	Latitude     float32              `json:"latitude"`
+	Longitude    float32              `json:"longitude"`
+	Title        string               `json:"title"`
+	Address      string               `json:"address"`
+	FoursquareId string               `json:"foursquare_id"`
+	ReplyMarkup  InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
-	ThumbUrl            string               `json:"thumb_url"`
-	ThumbWidth          int                  `json:"thumb_width"`
-	ThumbHeight         int                  `json:"thumb_height"`
+	ThumbUrl    string `json:"thumb_url"`
+	ThumbWidth  int    `json:"thumb_width"`
+	ThumbHeight int    `json:"thumb_height"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcontact
 type InlineQueryResultContact struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	PhoneNumber         string               `json:"phone_number"`
-	FirstName           string               `json:"first_name"`
-	LastName            string               `json:"last_name"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	PhoneNumber string               `json:"phone_number"`
+	FirstName   string               `json:"first_name"`
+	LastName    string               `json:"last_name"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
-	ThumbUrl            string               `json:"thumb_url"`
-	ThumbWidth          int                  `json:"thumb_width"`
-	ThumbHeight         int                  `json:"thumb_height"`
+	ThumbUrl    string `json:"thumb_url"`
+	ThumbWidth  int    `json:"thumb_width"`
+	ThumbHeight int    `json:"thumb_height"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultgame
@@ -533,89 +533,89 @@ type InlineQueryResultGame struct {
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
 type InlineQueryResultCachedPhoto struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	PhotoFileId         string               `json:"photo_file_id"`
-	Title               string               `json:"title"`
-	Description         string               `json:"description"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	PhotoFileId string               `json:"photo_file_id"`
+	Title       string               `json:"title"`
+	Description string               `json:"description"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedgif
 type InlineQueryResultCachedGif struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	GifFileId           string               `json:"gif_file_id"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	GifFileId   string               `json:"gif_file_id"`
+	Title       string               `json:"title"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
 type InlineQueryResultCachedMpeg4Gif struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Mpeg4FileId         string               `json:"mpeg4_file_id"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	Mpeg4FileId string               `json:"mpeg4_file_id"`
+	Title       string               `json:"title"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
 type InlineQueryResultCachedSticker struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	StickerFileId       string               `json:"sticker_file_id"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type          string               `json:"type"`
+	Id            string               `json:"id"`
+	StickerFileId string               `json:"sticker_file_id"`
+	ReplyMarkup   InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
 type InlineQueryResultCachedDocument struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	Title               string               `json:"title"`
-	DocumentFileId      string               `json:"document_file_id"`
-	Description         string               `json:"description"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type           string               `json:"type"`
+	Id             string               `json:"id"`
+	Title          string               `json:"title"`
+	DocumentFileId string               `json:"document_file_id"`
+	Description    string               `json:"description"`
+	Caption        string               `json:"caption"`
+	ReplyMarkup    InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
 type InlineQueryResultCachedVideo struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	VideoFileId         string               `json:"video_file_id"`
-	Title               string               `json:"title"`
-	Description         string               `json:"description"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	VideoFileId string               `json:"video_file_id"`
+	Title       string               `json:"title"`
+	Description string               `json:"description"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedvoice
 type InlineQueryResultCachedVoice struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	VoiceFileId         string               `json:"voice_file_id"`
-	Title               string               `json:"title"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	VoiceFileId string               `json:"voice_file_id"`
+	Title       string               `json:"title"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
 // https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
 type InlineQueryResultCachedAudio struct {
-	Type                string               `json:"type"`
-	Id                  string               `json:"id"`
-	AudioFileId         string               `json:"audio_file_id"`
-	Caption             string               `json:"caption"`
-	ReplyMarkup         InlineKeyboardMarkup `json:"reply_markup"`
+	Type        string               `json:"type"`
+	Id          string               `json:"id"`
+	AudioFileId string               `json:"audio_file_id"`
+	Caption     string               `json:"caption"`
+	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup"`
 	//TODO InputMessageContent InputMessageContent  `json:"input_message_content"`
 }
 
