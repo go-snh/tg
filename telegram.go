@@ -33,17 +33,41 @@ type status struct {
 	Status     bool         `json:"ok"`
 }
 
+type apiError struct {
+	Status     bool         `json:"ok"`
+	ErrorCode int `json:"error_code"`
+	Description string `json:"description"`
+}
+
 /** Utility Functions **/
+
 func funcName() string {
 	pc, _, _, _ := runtime.Caller(1)
 	return runtime.FuncForPC(pc).Name()
 }
-
+func debug_println(message string) {
+	if debug {
+		println("DEBUG: "+message)
+	}
+}
 func generateMethodUrl(methodStr string, params map[string]interface{}) string {
 
 	methodStr = methodStr + "?"
 	for key, value := range params {
-		methodStr = fmt.Sprintf("%s%s=%s&", methodStr, key, value)
+		data := ""
+		switch value.(type) {
+		case bool:
+			data = fmt.Sprintf("%t", value.(bool))
+		case int:
+			data = fmt.Sprintf("%d", value.(int))
+		case float32:
+			data = fmt.Sprintf("%g", value.(float32))
+		case string:
+			data = value.(string)
+		}
+		methodStr = fmt.Sprintf("%s%s=%s&", methodStr, key, data)
+			debug_println("Key  = "+key)
+			debug_println(fmt.Sprint("Value = "+data+"\n"))
 	}
 	return methodStr
 }
@@ -74,18 +98,24 @@ func (bot *TelegramBot) callAPI(methodName string, params map[string]interface{}
 		methodStr = generateMethodUrl(methodName, params)
 	}
 	fullUrl := fmt.Sprintf("%s/%s", bot.baseURL, methodStr)
-	if debug {
-		println("DEBUG: "+ fullUrl)
-	}
+		debug_println(fullUrl)
 	resp, _ := myClient.Get(fullUrl)
 	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New(string(resp.Status))
-	}
 	response, _ := ioutil.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		err_obj := new(apiError);
+		json.Unmarshal(response, err_obj)
+		debug_println(fmt.Sprintf("%+v", err_obj))
+		return nil, errors.New(fmt.Sprintf("error_code: %d Description: %s", err_obj.ErrorCode, err_obj.Description))
+	}
+	/*
 	if !strings.Contains(string(response), "{\"ok\":true") {
+		err_obj := new(apiError);
+		json.Unmarshal(response, err_obj)
+		debug_println(fmt.Sprintf("%+v", err_obj))
 		return nil, errors.New(fmt.Sprint("%s returned failure.\nFull URL: %s", methodName, fullUrl))
 	}
+	*/
 	return response, nil
 }
 
@@ -94,8 +124,11 @@ func (bot *TelegramBot) callAPI(methodName string, params map[string]interface{}
 func (bot *TelegramBot) GetMe() (*User, error) {
 
 	response := new(struct {status, User *User `json:"result"`})
-	str, _ := bot.callAPI("getMe", nil)
-	err := json.Unmarshal(str, &response)
+	str, err := bot.callAPI("getMe", nil)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(str, &response)
 	if err != nil {
 		return nil, err
 	}
@@ -106,8 +139,11 @@ func (bot *TelegramBot) GetMe() (*User, error) {
 // Return Type: Message
 func (bot *TelegramBot) SendMessage(params map[string]interface{}) (*Message, error) {
 	response := new (struct {status, Message *Message `json:"result"`})
-	str, _ := bot.callAPI("getMe", params)
-	err := json.Unmarshal(str, &response)
+	str, err := bot.callAPI("sendMessage", params)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(str, &response)
 	if err != nil {
 		return nil, err
 	}

@@ -19,5 +19,13 @@ func main() {
 		log.Fatal(err)
 	}
 	println("Hello! I am "+bot_user.FirstName)
+
+	message := make(map[string]interface{})
+	message["chat_id"] = 3899337
+	message["text"] = "Hello! I am "+bot_user.FirstName
+	_, err = bot1.SendMessage(message)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
