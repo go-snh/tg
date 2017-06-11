@@ -1,3 +1,2 @@
 *.token
-!go-test/MyBot.token
 .history
