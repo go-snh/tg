@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
 	"runtime"
 	"time"
 	//	"github.com/mitchellh/mapstructure"
@@ -20,8 +21,9 @@ var debug = false
 
 /** Structures **/
 type TelegramBot struct {
-	token   string
-	baseURL string
+	token         string
+	baseURL       string
+	updatesOffset int
 }
 
 type Response struct {
@@ -63,7 +65,8 @@ func generateMethodUrl(methodStr string, params map[string]interface{}) string {
 		case float32:
 			data = fmt.Sprintf("%g", value.(float32))
 		case string:
-			data = value.(string)
+			data = url.QueryEscape(value.(string))
+			//data = value.(string)
 		}
 		methodStr = fmt.Sprintf("%s%s=%s&", methodStr, key, data)
 		debug_println("Key  = " + key)
@@ -109,12 +112,12 @@ func (bot *TelegramBot) callAPI(methodName string, params map[string]interface{}
 		return nil, errors.New(fmt.Sprintf("error_code: %d Description: %s", err_obj.ErrorCode, err_obj.Description))
 	}
 	/*
-		if !strings.Contains(string(response), "{\"ok\":true") {
-			err_obj := new(apiError);
-			json.Unmarshal(response, err_obj)
-			debug_println(fmt.Sprintf("%+v", err_obj))
-			return nil, errors.New(fmt.Sprint("%s returned failure.\nFull URL: %s", methodName, fullUrl))
-		}
+	if !strings.Contains(string(response), "{\"ok\":true") {
+		err_obj := new(apiError);
+		json.Unmarshal(response, err_obj)
+		debug_println(fmt.Sprintf("%+v", err_obj))
+		return nil, errors.New(fmt.Sprint("%s returned failure.\nFull URL: %s", methodName, fullUrl))
+	}
 	*/
 	return response, nil
 }
@@ -127,13 +130,9 @@ func (bot *TelegramBot) GetMe() (*User, error) {
 		status, User *User `json:"result"`
 	})
 	str, err := bot.callAPI("getMe", nil)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
 	err = json.Unmarshal(str, &response)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
 	return response.User, nil
 }
 
@@ -143,14 +142,44 @@ func (bot *TelegramBot) SendMessage(params map[string]interface{}) (*Message, er
 	response := new(struct {
 		status, Message *Message `json:"result"`
 	})
+	if (params == nil) {
+		return nil, errors.New(fmt.Sprint("params not passed in SendMessage"))
+	}
+	//params["text"] = url.QueryEscape(params["text"])
 	str, err := bot.callAPI("sendMessage", params)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
 	err = json.Unmarshal(str, &response)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
 	return response.Message, nil
 }
 
+// https://core.telegram.org/bots/api#getupdates
+// Return Type: []Updates
+func (bot* TelegramBot) GetUpdates(params map[string]interface{}) ([]Update, error) {
+	response := new(struct {
+		status, Updates []Update `json:"result"`
+	})
+	str, err := bot.callAPI("getUpdates", params)
+	params = nil
+	if err != nil { return nil, err }
+	err = json.Unmarshal(str, &response)
+	if err != nil { return nil, err }
+	if len(response.Updates) > 0 {
+		bot.updatesOffset = response.Updates[len(response.Updates)-1].UpdateId + 1
+	}
+	return response.Updates, nil
+}
+
+// Return Type: []Updates
+func (bot* TelegramBot) GetNewUpdates(params map[string]interface{}) ([]Update, error) {
+	if params != nil {
+		_, present := params["offset"]
+		if !present || params["offset"] == 0 {
+			params["offset"] = bot.updatesOffset
+		}
+	} else {
+		params = make(map[string]interface{})
+		params["offset"] = bot.updatesOffset
+	}
+	return bot.GetUpdates(params)
+}
